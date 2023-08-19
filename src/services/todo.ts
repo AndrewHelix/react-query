@@ -2,7 +2,7 @@ import { Todo } from "./../types/todo";
 import axios from "axios";
 
 class TodoService {
-  private readonly url = "https://jsonplaceholder.typicode.com/todos1/";
+  private readonly url = "https://jsonplaceholder.typicode.com/todos/";
 
   getTodoById(id: number) {
     return axios.get<Todo>(this.url + id);
