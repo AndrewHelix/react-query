@@ -9,7 +9,19 @@ class TodoService {
   }
 
   getTodos() {
-    return axios.get<Todo[]>(this.url);
+    return axios.get<Todo[]>(`${this.url}?_start=0&_limit=5`);
+  }
+
+  createTodo(title: string) {
+    return axios
+      .post<Todo>(this.url, {
+        data: {
+          title,
+          userId: 1,
+          completed: false,
+        },
+      })
+      .then((data) => data.data);
   }
 }
 
