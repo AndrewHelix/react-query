@@ -1,17 +1,8 @@
 import "./App.css";
-import { useQuery } from "@tanstack/react-query";
-import TodoService from "./services/todo";
+import { useTodosQuery } from "./hooks/useTodosQuery";
 
 function App() {
-  const { data, isSuccess, isLoading } = useQuery(["todo"], () => TodoService.getTodos(), {
-    select: (data) => data.data,
-    onSuccess(data) {
-      console.log(data.length)
-    },
-    onError: (err) => {
-      console.log(err)
-    }
-  });
+  const { data, isLoading, isSuccess } = useTodosQuery();
 
   if (isLoading) {
     return <h3>Loading...</h3>;
